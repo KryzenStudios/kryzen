@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | Kryzen</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Kryzen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -12,26 +12,41 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0c10;
             color: #e1e7f0;
+            line-height: 1.5;
         }
+
         .container {
-            max-width: 1200px;  /* Matches home page */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
+
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @keyframes slideInLeft {
             from {
                 opacity: 0;
@@ -42,26 +57,55 @@
                 transform: translateX(0);
             }
         }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animated {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animated-delay-1 {
+            animation: fadeInUp 0.6s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .animated-delay-2 {
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Header */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 1rem;
             animation: slideInLeft 0.5s ease-out;
         }
+
         .logo-area {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
+
         .logo-image {
             height: 40px;
             width: auto;
+            transition: transform 0.3s ease;
         }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
         .logo-text-fallback {
             font-size: 1.6rem;
             font-weight: 800;
@@ -70,98 +114,189 @@
             background-clip: text;
             color: transparent;
         }
+
         .company-name {
             font-size: 1.5rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
             background: linear-gradient(135deg, #ffffff, #c084fc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
             flex-wrap: wrap;
         }
+
         .nav-links a {
             color: #b0b8c5;
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
         }
+
         .nav-links a:hover {
             color: #a855f7;
         }
+
         .btn-outline {
             border: 1px solid #a855f7;
             padding: 0.5rem 1.2rem;
             border-radius: 8px;
             color: #a855f7 !important;
         }
+
         .btn-outline:hover {
             background: #a855f7;
             color: white !important;
+            transform: translateY(-2px);
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            animation: fadeInUp 0.6s ease-out 0.1s forwards;
-            opacity: 0;
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0 4rem 0;
+            text-align: center;
         }
-        .subhead {
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #c084fc, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
             color: #9ca3af;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.6s ease-out 0.15s forwards;
-            opacity: 0;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .support-card {
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 2rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Unified card style - same for all cards */
+        .card {
             background: #13161f;
             border-radius: 1.5rem;
-            padding: 1.5rem;
             border: 1px solid rgba(255,255,255,0.08);
-            margin: 1.5rem 0;
-            animation: fadeInUp 0.6s ease-out 0.2s forwards;
-            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .email-box {
-            background: #0a0c10;
-            padding: 1rem;
-            border-radius: 12px;
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #a855f7;
+            box-shadow: 0 20px 30px -15px rgba(168, 85, 247, 0.2);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+        }
+
+        /* Icon and title on same line */
+        .card-header-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-            gap: 1rem;
+            gap: 0.75rem;
         }
-        .email {
-            font-size: 1rem;
-            font-family: monospace;
-            color: #c084fc;
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: #a855f7;
+            transition: transform 0.3s ease;
         }
-        .button-copy {
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card-body {
+            padding: 0.75rem 1.5rem 1rem 1.5rem;
+        }
+
+        .card-desc {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0 0 0;
+        }
+
+        .feature-list li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            color: #b0b8c5;
+        }
+
+        .feature-list i {
+            color: #a855f7;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .card-footer {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .btn-buy {
+            display: inline-block;
             background: #a855f7;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
             color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: center;
         }
-        .button-copy:hover {
+
+        .btn-buy:hover {
             background: #7c3aed;
-            transform: scale(1.02);
+            transform: translateY(-2px);
         }
-        .note {
-            background: rgba(168, 85, 247, 0.08);
-            border-left: 3px solid #a855f7;
-            padding: 0.8rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            font-size: 0.85rem;
+
+        /* Coming Soon - same card style, just different inner content */
+        .coming-soon-icon {
+            font-size: 2rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
         }
+
+        .card:hover .coming-soon-icon {
+            color: #a855f7;
+        }
+
+        /* Footer */
         footer {
             margin-top: 4rem;
             padding: 2rem 0;
@@ -169,58 +304,102 @@
             text-align: center;
             color: #6b7280;
             font-size: 0.85rem;
-            animation: fadeInUp 0.6s ease-out 0.3s forwards;
-            opacity: 0;
         }
+
         footer a {
             color: #a855f7;
             text-decoration: none;
         }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
             .navbar { flex-direction: column; text-align: center; }
             .container { padding: 0 1rem; }
-            h1 { font-size: 1.8rem; }
+            .card-header-row { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
+
 <div class="container">
+    <!-- Header -->
     <div class="navbar">
         <div class="logo-area">
-            <img src="assets/images/logo/logo.png" alt="Kryzen Logo" class="logo-image" style="height: 40px;" onerror="this.style.display='none'; this.nextSibling.style.display='inline-block';">
+            <img src="assets/images/logo/logo.png" alt="Kryzen Logo" class="logo-image" onerror="this.style.display='none'; this.nextSibling.style.display='inline-block';">
             <span class="logo-text-fallback" style="display: none;">K</span>
             <span class="company-name">Kryzen</span>
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="index.html#products">Products</a>
+            <a href="#products">Products</a>
             <a href="support.html">Support</a>
             <a href="#" class="btn-outline" id="publisherLink" target="_blank">Publisher Page</a>
         </div>
     </div>
 
-    <h1>Support</h1>
-    <div class="subhead">Questions? Feedback? We're here to help.</div>
+    <!-- Hero -->
+    <div class="hero">
+        <h1 class="animated">Create better.<br>Work smarter.</h1>
+        <p class="animated-delay-1">Building thoughtful solutions for creators, developers, and teams.</p>
+    </div>
 
-    <div class="support-card">
-        <i class="fas fa-envelope" style="font-size: 1.5rem; color: #a855f7; margin-bottom: 1rem; display: block;"></i>
-        <h3 style="margin-bottom: 0.5rem;">Email</h3>
-        <div class="email-box">
-            <span class="email">kryzen.support@gmail.com</span>
-            <button class="button-copy" onclick="copyEmail()"><i class="far fa-copy"></i> Copy</button>
+    <!-- Products Section -->
+    <h2 id="products" class="section-title animated-delay-2">Products</h2>
+    <div class="products-grid">
+        
+        <!-- SHO PRO Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-row">
+                    <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="card-title">SHO PRO</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-desc">Smart Editor Toolkit for Unity. Transform your workflow with Hierarchy organization, auto-tagging, scene diagnostics, and backup management.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Auto-Tag Rules with pattern scoring</li>
+                    <li><i class="fas fa-check"></i> Visual Hierarchy color system</li>
+                    <li><i class="fas fa-check"></i> Scene Diagnostics & Prefab Overrides</li>
+                    <li><i class="fas fa-check"></i> Smart Search & Backup Manager</li>
+                    <li><i class="fas fa-check"></i> Unity 2019.4+ / Unity 6</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <a href="https://u3d.as/3Wtz" class="btn-buy" target="_blank">
+                    <i class="fab fa-unity"></i> View on Asset Store
+                </a>
+            </div>
         </div>
-        <div class="note">
-            <i class="fas fa-receipt"></i> Please include your <strong>Invoice Number</strong> for faster assistance.
+
+        <!-- Coming Soon - Same card style -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-row">
+                    <div class="coming-soon-icon"><i class="fas fa-cube"></i></div>
+                    <h3 class="card-title">Coming Soon</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-desc">Something new is in the works. More details coming soon.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-clock"></i> Announcement coming</li>
+                    <li><i class="fas fa-envelope"></i> Follow for updates</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <button class="btn-buy" style="background: #2d2d3d; cursor: default; opacity: 0.7;">
+                    <i class="fas fa-hourglass-half"></i> Stay Tuned
+                </button>
+            </div>
         </div>
     </div>
 
-    <div class="support-card">
-        <h3 style="margin-bottom: 0.75rem;">Products</h3>
-        <ul style="margin-left: 1.2rem; color: #b0b8c5; line-height: 1.6;">
-            <li>SHO PRO - Smart Editor Toolkit for Unity</li>
-        </ul>
-    </div>
-
+    <!-- Footer -->
     <footer>
         <p>© 2026 Kryzen. All rights reserved.</p>
         <p style="margin-top: 0.5rem;">
@@ -230,19 +409,11 @@
 </div>
 
 <script>
-    function copyEmail() {
-        navigator.clipboard.writeText("kryzen.support@gmail.com");
-        const btn = event.target.closest('.button-copy');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-        }, 2000);
-    }
-
-    // Update this when you have your publisher page URL
-    // const publisherLink = document.getElementById('publisherLink');
+    // Update publisher link when you have your publisher page URL
+    // Replace the # below with your actual publisher page link
+    const publisherLink = document.getElementById('publisherLink');
     // publisherLink.href = "https://assetstore.unity.com/publishers/YOUR-PUBLISHER-ID";
 </script>
+
 </body>
 </html>
