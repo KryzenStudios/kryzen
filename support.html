@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Kryzen Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0c10;
+            color: #e1e7f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0 2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            margin-left: 1.5rem;
+        }
+        .nav-links a:hover {
+            color: #a855f7;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .support-card {
+            background: #13161f;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin: 1.5rem 0;
+        }
+        .email-box {
+            background: #0a0c10;
+            padding: 1rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            gap: 1rem;
+        }
+        .email {
+            font-size: 1rem;
+            font-family: monospace;
+            color: #c084fc;
+        }
+        .button-copy {
+            background: #a855f7;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid #f59e0b;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo-area">
+            <img src="assets/images/logo/logo.png" alt="Kryzen Studios" class="logo-image" style="height: 40px;" onerror="this.style.display='none'; this.nextSibling.style.display='block';">
+            <div class="logo-text" style="display: none;">KRYZEN</div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+
+    <h1>📧 Customer Support</h1>
+    <p>For technical issues, pre-sale questions, or general inquiries.</p>
+
+    <div class="support-card">
+        <i class="fas fa-envelope" style="font-size: 1.5rem; color: #a855f7; margin-bottom: 0.8rem; display: block;"></i>
+        <h3>Email Support</h3>
+        <p><strong>Response:</strong> Within 24-48 hours (business days)</p>
+        <div class="email-box">
+            <span class="email">kryzen.support@gmail.com</span>
+            <button class="button-copy" onclick="copyEmail()"><i class="far fa-copy"></i> Copy</button>
+        </div>
+        <div class="warning">
+            <i class="fas fa-receipt"></i> <strong>Important:</strong> Please include your <strong>Invoice Number</strong> from the Asset Store receipt.
+        </div>
+    </div>
+
+    <div class="support-card">
+        <h3>📦 Products</h3>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem; color: #b0b8c5;">
+            <li>SHO PRO - Smart Editor Toolkit</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>© 2025 Kryzen Studios</p>
+    </footer>
+</div>
+
+<script>
+    function copyEmail() {
+        navigator.clipboard.writeText("kryzen.support@gmail.com");
+        alert("Email copied!");
+    }
+</script>
+</body>
+</html>
