@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kryzen Studios | Unity Tools</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
+    <title>Support | Kryzen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -14,227 +12,156 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0c10;
             color: #e1e7f0;
-            line-height: 1.5;
         }
-
         .container {
-            max-width: 1200px;
+            max-width: 1200px;  /* Matches home page */
             margin: 0 auto;
             padding: 0 2rem;
         }
-
-        /* Header */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 1rem;
+            animation: slideInLeft 0.5s ease-out;
         }
-
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
-
         .logo-image {
-            height: 48px;
+            height: 40px;
             width: auto;
         }
-
-        /* If no logo yet, use this text version */
-        .logo-text {
+        .logo-text-fallback {
             font-size: 1.6rem;
-            font-weight: 700;
+            font-weight: 800;
             background: linear-gradient(135deg, #ffffff, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
+            flex-wrap: wrap;
         }
-
         .nav-links a {
             color: #b0b8c5;
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
         }
-
         .nav-links a:hover {
             color: #a855f7;
         }
-
         .btn-outline {
             border: 1px solid #a855f7;
             padding: 0.5rem 1.2rem;
             border-radius: 8px;
             color: #a855f7 !important;
         }
-
         .btn-outline:hover {
             background: #a855f7;
             color: white !important;
         }
-
-        /* Hero */
-        .hero {
-            padding: 4rem 0 3rem 0;
-            text-align: center;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.6s ease-out 0.1s forwards;
+            opacity: 0;
         }
-
-        .badge {
-            background: rgba(168, 85, 247, 0.15);
+        .subhead {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.15s forwards;
+            opacity: 0;
+        }
+        .support-card {
+            background: #13161f;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin: 1.5rem 0;
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+        .email-box {
+            background: #0a0c10;
+            padding: 1rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            gap: 1rem;
+        }
+        .email {
+            font-size: 1rem;
+            font-family: monospace;
             color: #c084fc;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
         }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #9ca3af;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Products Grid */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 3rem 0 2rem 0;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .product-card {
-            background: #13161f;
-            border-radius: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: #a855f7;
-        }
-
-        .product-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .product-icon {
-            font-size: 2rem;
-            color: #a855f7;
-            margin-bottom: 1rem;
-        }
-
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .product-version {
-            font-size: 0.8rem;
-            color: #6b7280;
-        }
-
-        .product-body {
-            padding: 1.5rem;
-        }
-
-        .product-desc {
-            color: #9ca3af;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 1rem 0 0 0;
-        }
-
-        .feature-list li {
-            padding: 0.3rem 0;
-            font-size: 0.9rem;
-            color: #b0b8c5;
-        }
-
-        .feature-list i {
-            color: #a855f7;
-            margin-right: 0.5rem;
-            font-size: 0.8rem;
-        }
-
-        .product-footer {
-            padding: 1rem 1.5rem 1.5rem;
-        }
-
-        .btn-buy {
-            display: inline-block;
+        .button-copy {
             background: #a855f7;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
             font-weight: 600;
+            cursor: pointer;
             transition: 0.2s;
-            width: 100%;
-            text-align: center;
         }
-
-        .btn-buy:hover {
+        .button-copy:hover {
             background: #7c3aed;
+            transform: scale(1.02);
         }
-
-        /* Coming Soon Card */
-        .coming-card {
-            background: #13161f;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            text-align: center;
-            border: 1px dashed rgba(168, 85, 247, 0.3);
-            opacity: 0.7;
+        .note {
+            background: rgba(168, 85, 247, 0.08);
+            border-left: 3px solid #a855f7;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-size: 0.85rem;
         }
-
-        .coming-card i {
-            font-size: 2rem;
-            color: #6b7280;
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
         footer {
             margin-top: 4rem;
             padding: 2rem 0;
@@ -242,102 +169,80 @@
             text-align: center;
             color: #6b7280;
             font-size: 0.85rem;
+            animation: fadeInUp 0.6s ease-out 0.3s forwards;
+            opacity: 0;
         }
-
         footer a {
             color: #a855f7;
             text-decoration: none;
         }
-
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
             .navbar { flex-direction: column; text-align: center; }
             .container { padding: 0 1rem; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <!-- Navigation -->
     <div class="navbar">
         <div class="logo-area">
-            <!-- OPTION 1: If you have a logo image -->
-            <img src="assets/images/logo/logo.png" alt="Kryzen Studios" class="logo-image" onerror="this.style.display='none'; this.nextSibling.style.display='block';">
-            <!-- OPTION 2: Text logo (shows if image fails) -->
-            <div class="logo-text" style="display: none;">KRYZEN</div>
+            <img src="assets/images/logo/logo.png" alt="Kryzen Logo" class="logo-image" style="height: 40px;" onerror="this.style.display='none'; this.nextSibling.style.display='inline-block';">
+            <span class="logo-text-fallback" style="display: none;">K</span>
+            <span class="company-name">Kryzen</span>
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
             <a href="support.html">Support</a>
-            <a href="https://assetstore.unity.com/publishers/78456" class="btn-outline" target="_blank">Our Publisher Page</a>
+            <a href="#" class="btn-outline" id="publisherLink" target="_blank">Publisher Page</a>
         </div>
     </div>
 
-    <!-- Hero -->
-    <div class="hero">
-        <div class="badge">🏢 Unity Asset Store Publisher</div>
-        <h1>Kryzen Studios</h1>
-        <p>Professional editor extensions for Unity developers</p>
-    </div>
+    <h1>Support</h1>
+    <div class="subhead">Questions? Feedback? We're here to help.</div>
 
-    <!-- Products -->
-    <h2 class="section-title">Products</h2>
-    <div class="products-grid">
-        
-        <!-- SHO PRO Card -->
-        <div class="product-card">
-            <div class="product-header">
-                <div class="product-icon"><i class="fas fa-layer-group"></i></div>
-                <div class="product-title">SHO PRO</div>
-                <div class="product-version">Version 1.0.0</div>
-            </div>
-            <div class="product-body">
-                <p class="product-desc">Smart Editor Toolkit that transforms your Unity Hierarchy with auto-tagging, visual organization, scene diagnostics, and backup management.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> Auto-Tag Rules with pattern scoring</li>
-                    <li><i class="fas fa-check"></i> Visual Hierarchy color system</li>
-                    <li><i class="fas fa-check"></i> Scene Diagnostics & Prefab Overrides</li>
-                    <li><i class="fas fa-check"></i> Smart Search & Backup Manager</li>
-                    <li><i class="fas fa-check"></i> Unity 2019.4+ & Unity 6 compatible</li>
-                </ul>
-            </div>
-            <div class="product-footer">
-                <a href="https://u3d.as/3Wtz" class="btn-buy" target="_blank">
-                    <i class="fab fa-unity"></i> View on Asset Store
-                </a>
-            </div>
+    <div class="support-card">
+        <i class="fas fa-envelope" style="font-size: 1.5rem; color: #a855f7; margin-bottom: 1rem; display: block;"></i>
+        <h3 style="margin-bottom: 0.5rem;">Email</h3>
+        <div class="email-box">
+            <span class="email">kryzen.support@gmail.com</span>
+            <button class="button-copy" onclick="copyEmail()"><i class="far fa-copy"></i> Copy</button>
         </div>
-
-        <!-- Coming Soon -->
-        <div class="coming-card">
-            <i class="fas fa-cube"></i>
-            <h3>More Tools Coming Soon</h3>
-            <p style="color: #9ca3af; margin-top: 0.5rem;">Follow us for updates on new releases</p>
+        <div class="note">
+            <i class="fas fa-receipt"></i> Please include your <strong>Invoice Number</strong> for faster assistance.
         </div>
     </div>
 
-    <!-- Footer -->
+    <div class="support-card">
+        <h3 style="margin-bottom: 0.75rem;">Products</h3>
+        <ul style="margin-left: 1.2rem; color: #b0b8c5; line-height: 1.6;">
+            <li>SHO PRO - Smart Editor Toolkit for Unity</li>
+        </ul>
+    </div>
+
     <footer>
-        <p>© 2025 Kryzen Studios. All rights reserved.</p>
-        <p style="margin-top: 0.5rem;">📧 <a href="mailto:kryzen.support@gmail.com">kryzen.support@gmail.com</a></p>
+        <p>© 2026 Kryzen. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="mailto:kryzen.support@gmail.com">kryzen.support@gmail.com</a>
+        </p>
     </footer>
 </div>
 
 <script>
-    // Simple fallback: if logo image fails, show text logo
-    const logoImg = document.querySelector('.logo-image');
-    const logoTxt = document.querySelector('.logo-text');
-    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
-        logoImg.style.display = 'none';
-        logoTxt.style.display = 'block';
-    } else if (logoImg) {
-        logoImg.onerror = function() {
-            logoImg.style.display = 'none';
-            logoTxt.style.display = 'block';
-        };
+    function copyEmail() {
+        navigator.clipboard.writeText("kryzen.support@gmail.com");
+        const btn = event.target.closest('.button-copy');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
     }
-</script>
 
+    // Update this when you have your publisher page URL
+    // const publisherLink = document.getElementById('publisherLink');
+    // publisherLink.href = "https://assetstore.unity.com/publishers/YOUR-PUBLISHER-ID";
+</script>
 </body>
 </html>
