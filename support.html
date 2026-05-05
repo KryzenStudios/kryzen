@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | Kryzen Studios</title>
+    <title>Support | Kryzen</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -18,55 +18,111 @@
             color: #e1e7f0;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;  /* Matches home page */
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0 2rem 0;
+            padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.08);
             margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 1rem;
+            animation: slideInLeft 0.5s ease-out;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
         .logo-image {
             height: 40px;
             width: auto;
         }
-        .logo-text {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .logo-text-fallback {
+            font-size: 1.6rem;
+            font-weight: 800;
             background: linear-gradient(135deg, #ffffff, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
         .nav-links a {
-            color: #9ca3af;
+            color: #b0b8c5;
             text-decoration: none;
-            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: 0.2s;
         }
         .nav-links a:hover {
             color: #a855f7;
         }
+        .btn-outline {
+            border: 1px solid #a855f7;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            color: #a855f7 !important;
+        }
+        .btn-outline:hover {
+            background: #a855f7;
+            color: white !important;
+        }
         h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            animation: fadeInUp 0.6s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+        .subhead {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.15s forwards;
+            opacity: 0;
         }
         .support-card {
             background: #13161f;
-            border-radius: 20px;
+            border-radius: 1.5rem;
             padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             margin: 1.5rem 0;
+            animation: fadeInUp 0.6s ease-out 0.2s forwards;
+            opacity: 0;
         }
         .email-box {
             background: #0a0c10;
@@ -87,32 +143,43 @@
         .button-copy {
             background: #a855f7;
             border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             color: white;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.8rem;
+            transition: 0.2s;
         }
-        .warning {
-            background: rgba(245, 158, 11, 0.1);
-            border-left: 3px solid #f59e0b;
+        .button-copy:hover {
+            background: #7c3aed;
+            transform: scale(1.02);
+        }
+        .note {
+            background: rgba(168, 85, 247, 0.08);
+            border-left: 3px solid #a855f7;
             padding: 0.8rem;
             margin: 1rem 0;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.85rem;
         }
         footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
+            margin-top: 4rem;
+            padding: 2rem 0;
             border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
             color: #6b7280;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            animation: fadeInUp 0.6s ease-out 0.3s forwards;
+            opacity: 0;
         }
-        @media (max-width: 600px) {
-            .container { padding: 1rem; }
-            h1 { font-size: 1.5rem; }
+        footer a {
+            color: #a855f7;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; text-align: center; }
+            .container { padding: 0 1rem; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -120,48 +187,62 @@
 <div class="container">
     <div class="navbar">
         <div class="logo-area">
-            <img src="assets/images/logo/logo.png" alt="Kryzen Studios" class="logo-image" style="height: 40px;" onerror="this.style.display='none'; this.nextSibling.style.display='block';">
-            <div class="logo-text" style="display: none;">KRYZEN</div>
+            <img src="assets/images/logo/logo.png" alt="Kryzen Logo" class="logo-image" style="height: 40px;" onerror="this.style.display='none'; this.nextSibling.style.display='inline-block';">
+            <span class="logo-text-fallback" style="display: none;">K</span>
+            <span class="company-name">Kryzen</span>
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
             <a href="support.html">Support</a>
+            <a href="#" class="btn-outline" id="publisherLink" target="_blank">Publisher Page</a>
         </div>
     </div>
 
-    <h1>📧 Customer Support</h1>
-    <p>For technical issues, pre-sale questions, or general inquiries.</p>
+    <h1>Support</h1>
+    <div class="subhead">Questions? Feedback? We're here to help.</div>
 
     <div class="support-card">
-        <i class="fas fa-envelope" style="font-size: 1.5rem; color: #a855f7; margin-bottom: 0.8rem; display: block;"></i>
-        <h3>Email Support</h3>
-        <p><strong>Response:</strong> Within 24-48 hours (business days)</p>
+        <i class="fas fa-envelope" style="font-size: 1.5rem; color: #a855f7; margin-bottom: 1rem; display: block;"></i>
+        <h3 style="margin-bottom: 0.5rem;">Email</h3>
         <div class="email-box">
             <span class="email">kryzen.support@gmail.com</span>
             <button class="button-copy" onclick="copyEmail()"><i class="far fa-copy"></i> Copy</button>
         </div>
-        <div class="warning">
-            <i class="fas fa-receipt"></i> <strong>Important:</strong> Please include your <strong>Invoice Number</strong> from the Asset Store receipt.
+        <div class="note">
+            <i class="fas fa-receipt"></i> Please include your <strong>Invoice Number</strong> for faster assistance.
         </div>
     </div>
 
     <div class="support-card">
-        <h3>📦 Products</h3>
-        <ul style="margin-left: 1.2rem; margin-top: 0.5rem; color: #b0b8c5;">
-            <li>SHO PRO - Smart Editor Toolkit</li>
+        <h3 style="margin-bottom: 0.75rem;">Products</h3>
+        <ul style="margin-left: 1.2rem; color: #b0b8c5; line-height: 1.6;">
+            <li>SHO PRO - Smart Editor Toolkit for Unity</li>
         </ul>
     </div>
 
     <footer>
-        <p>© 2025 Kryzen Studios</p>
+        <p>© 2026 Kryzen. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="mailto:kryzen.support@gmail.com">kryzen.support@gmail.com</a>
+        </p>
     </footer>
 </div>
 
 <script>
     function copyEmail() {
         navigator.clipboard.writeText("kryzen.support@gmail.com");
-        alert("Email copied!");
+        const btn = event.target.closest('.button-copy');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
     }
+
+    // Update this when you have your publisher page URL
+    // const publisherLink = document.getElementById('publisherLink');
+    // publisherLink.href = "https://assetstore.unity.com/publishers/YOUR-PUBLISHER-ID";
 </script>
 </body>
 </html>
